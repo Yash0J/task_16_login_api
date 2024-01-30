@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Coustom {
-  ///[ coustom Text Widgit]
+class Custom {
+  //[ coustom Text Widgit]
   static Text text({
     String? text,
     TextAlign? textAlign,
@@ -26,7 +26,7 @@ class Coustom {
     );
   }
 
-  ///[ coustom TextStyle Widgit]
+  //[ coustom TextStyle Widgit]
   static TextStyle style({
     TextAlign? textAlign,
     double? fontSize = 14,
@@ -43,7 +43,7 @@ class Coustom {
     );
   }
 
-  ///[ coustom TextFormField Widgit]
+  //[ coustom TextFormField Widgit]
   static TextFormField textField({
     Widget? label,
     FloatingLabelBehavior? floatingLabelBehavior,

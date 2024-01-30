@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/constants/colors.dart';
-import '../../utils/shared/coustom_widgits.dart';
+import '../../utils/shared/custom_widgits.dart';
 import 'models/login_model.dart';
 
 class Login extends StatefulWidget {
@@ -127,7 +127,7 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 36),
                 // const SizedBox(height: 18),
                 //
-                Coustom.text(
+                Custom.text(
                   text: "Login",
                   fontSize: 40,
                   fontWeight: FontWeight.w600,
@@ -136,7 +136,7 @@ class _LoginState extends State<Login> {
                 //
                 const SizedBox(height: 12),
                 //
-                Coustom.text(
+                Custom.text(
                   text: "Please sign in to continue",
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -191,7 +191,7 @@ class _LoginState extends State<Login> {
       height: 88,
       child: Column(
         children: [
-          Coustom.textField(
+          Custom.textField(
             validator: (value) {
               setState(() {
                 _usernameError = validateUsername(value);
@@ -202,7 +202,7 @@ class _LoginState extends State<Login> {
             cursorColor: AppColors.white,
             prefixIcon: const Icon(Icons.person), // Set the prefix icon
             hintText: 'Enter user name', // Placeholder text
-            label: Coustom.text(
+            label: Custom.text(
               text: "User Name",
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -223,7 +223,7 @@ class _LoginState extends State<Login> {
       height: 88,
       child: Column(
         children: [
-          Coustom.textField(
+          Custom.textField(
             validator: (value) {
               setState(() {
                 _emailError = validateUsername(value);
@@ -234,7 +234,7 @@ class _LoginState extends State<Login> {
             cursorColor: AppColors.white,
             prefixIcon: const Icon(Icons.email_outlined), // Set the prefix icon
             hintText: 'Enter your email', // Placeholder text
-            label: Coustom.text(
+            label: Custom.text(
               text: "EMAIL",
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -255,7 +255,7 @@ class _LoginState extends State<Login> {
       height: 88,
       child: Column(
         children: [
-          Coustom.textField(
+          Custom.textField(
             validator: (value) {
               setState(() {
                 _passwordError = validateUsername(value);
@@ -265,7 +265,7 @@ class _LoginState extends State<Login> {
             controller: _passwordController,
             obscureText: true,
             hintText: 'Enter your password', // Placeholder text
-            label: Coustom.text(
+            label: Custom.text(
               text: "PASSWORD",
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -309,7 +309,7 @@ class _LoginState extends State<Login> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(600)),
         minimumSize: Size(mediaWidth / 1.7, 70),
       ),
-      child: Coustom.text(
+      child: Custom.text(
         text: "LOGIN",
         textAlign: TextAlign.center,
         fontSize: 20,
@@ -329,7 +329,7 @@ class _LoginState extends State<Login> {
         surfaceTintColor: Colors.transparent,
         splashFactory: NoSplash.splashFactory,
       ),
-      child: Coustom.text(
+      child: Custom.text(
         text: "Forgot Password?",
         textAlign: TextAlign.center,
         fontSize: 16,
@@ -346,12 +346,12 @@ class _LoginState extends State<Login> {
         textAlign: TextAlign.center,
         TextSpan(
           text: "Don't have an account? ",
-          style: Coustom.style(
+          style: Custom.style(
             colors: AppColors.white.withOpacity(0.64),
           ),
           children: [
             WidgetSpan(
-              child: Coustom.text(
+              child: Custom.text(
                 text: "Sign up",
                 colors: AppColors.green,
               ),
