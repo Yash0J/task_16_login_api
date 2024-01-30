@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../utils/constants/colors.dart';
 import '../../utils/shared/coustom_widgits.dart';
-import '../home/home_page.dart';
+import 'models/login_model.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -49,55 +49,39 @@ class _LoginState extends State<Login> {
     return null; // Password is valid
   }
 
-///////////////////////////////////////////////////////
-  ///[ appling API for post->api]
-  void login(String email, String password) async {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// [ appling API for post->api]
+  void login(LoginModel loginModel) async {
     try {
       http.Response response = await http.post(
         Uri.parse('https://reqres.in/api/login'),
-
-        ///[login api integraded]
-
-        body: {
-          //
-          /// 'email': 'eve.holt@reqres.in',
-          'email': email,
-
-          ///[getting email]
-
-          /// 'password': 'pistol',
-          'password': password,
-
-          ///[getting password]
-        },
+        //[login api integraded]
+        body: loginModel.toJson(),
       );
-
       String body = response.body;
-
-      /// [assigning body as body response]
-
+      // [assigning body as body response]
       if (response.statusCode == 200) {
-        ///[200 status code is for success]
+        //[200 status code is for success]
         // print('Account created successfully');
         var data = jsonDecode(body.toString());
-
-        ///[getting body data from api and decodeing it from json to dart and storing it to  variable 'data']
+        //[getting body data from api and decodeing it from json to dart and storing it to  variable 'data']
         print("token for login is: ${data['token']}");
-
-        ///[printing token in json data ]
+        //[printing token in json data ]
         print('login successfully');
+        //
       } else {
         print('Login failed, status_code => ${response.statusCode}');
-
-        ///[printing ststus-code for checking if it getting another one except 200, if it is getting one!]
+        //[printing ststus-code for checking if it getting another one except 200, if it is getting one!]
       }
     } catch (catchError) {
       print(catchError.toString());
-
-      ///[printing error, if it is getting one!]
+      //[printing error, if it is getting one!]
     }
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 
+//
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -305,10 +289,13 @@ class _LoginState extends State<Login> {
           print('Email: ${_emailController.text}');
           print('Password: ${_passwordController.text}');
         }
-        login(_emailController.text.toString(),
-            _passwordController.text.toString());
-        Navigator.of(context as BuildContext)
-            .push(MaterialPageRoute(builder: (context) => const HomePage()));
+
+        //[api calling here] starts here
+        login(LoginModel(
+          email: _emailController.text.toString(),
+          password: _passwordController.text.toString(),
+        ));
+        // ends here
       },
       style: TextButton.styleFrom(
         backgroundColor: AppColors.green,

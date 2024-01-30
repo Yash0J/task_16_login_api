@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import 'utils/constants/colors.dart';
 import 'sreens/auth/login_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized;
+  // SharedPreferences prefs = await SharedPreferences.getInstance();
+  // var email = prefs.getString("eve.holt@reqres.in");
+  // var password = prefs.getString("cityslicka");
+  // print(email);
+  // print(password);
+
   runApp(const MyApp());
 }
 
