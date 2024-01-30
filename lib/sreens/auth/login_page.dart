@@ -15,7 +15,7 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   ///
-  /// [Validator for username.]
+  //[Validator for username.]
   String? validateUsername(username) {
     if (username == null || username.isEmpty) {
       return 'Username is required';
@@ -25,14 +25,15 @@ class _LoginState extends State<Login> {
   }
 
   ///
-  /// [Validator for email.]
+  //[Validator for email.]
   String? validateEmail(email) {
     if (email == null || email.isEmpty) {
       return 'Email is required';
     }
 
     // Check if the email contains '@' and '.'
-    else if (!RegExp(r'^[^@]+@[^.]+\..+$').hasMatch(email)) {
+    else if (!RegExp(r'^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
+        .hasMatch(email)) {
       return 'Invalid email format';
     }
 
@@ -40,10 +41,16 @@ class _LoginState extends State<Login> {
   }
 
   ///
-  /// [Validator for password.]
+  //[Validator for password.]
   String? validatePassword(password) {
     if (password == null || password.isEmpty) {
       return 'Password is required';
+    }
+    else if (password != 'pistol' && // for api's special password is pistol
+    // Check if the password contains at least six characters and max sixteen characters including one uppercase letter, one lowercase letter, and one number or special character
+        RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,16}$')
+            .hasMatch(password)) {
+      return 'Invalid email format';
     }
 
     return null; // Password is valid
